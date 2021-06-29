@@ -22,7 +22,6 @@ export default {
   },
   async asyncData({ $http }) {
     const users = await $http.$get(`http://localhost:8888/api/users`)
-    console.log(users)
     return { users }
   }
 }

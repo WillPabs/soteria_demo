@@ -29,7 +29,6 @@ class UserController (private val userService: UserService) {
         val source = UrlBasedCorsConfigurationSource()
         val config = CorsConfiguration()
         config.allowCredentials = true
-        // *** URL below needs to match the Vue client URL and port ***
         config.allowedOrigins = Collections.singletonList("http://localhost:3000")
         config.allowedMethods = Collections.singletonList("*")
         config.allowedHeaders = Collections.singletonList("*")
