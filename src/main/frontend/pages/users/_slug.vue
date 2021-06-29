@@ -1,8 +1,9 @@
 <template>
   <article>
-    <h1>{{ user.firstName }}</h1>
+    <h1>{{ user.firstName }}  {{ user.lastName }}</h1>
     <section>
-      <p>{{ user.email }}</p>
+      <p>Id : {{ user.id }}</p>
+      <p>Email : {{ user.email }}</p>
     </section>
     <button @click="goBack">Back</button>
   </article>
@@ -14,15 +15,11 @@
         title: "User Info"
       }
     },
-    data() {
-      return {
-        user: []
-      }
-    },
-    async fetch({ $http, params }) {
-      this.user = await fetch(
-        `http://localhost:8888/api/user/${params.slug}`
+    async asyncData({ $http, params }) {
+      const user = await $http.$get(
+        `http://localhost:8888/api/user/${params.id}`
       )
+      return { user }
     },
     methods: {
       goBack() {
@@ -39,7 +36,11 @@
   img {
     height: 200px;
   }
+  section {
+    font-family:Georgia,serif,Times; font-size:18px;margin:auto;background-color:#333; border-left:5px solid #222; border-right:5px solid #222; padding-left:10px;
+    text-decoration:none; color:#bfe1f1;
+  }
   p {
-    text-align: left;
+    text-align: center;
   }
 </style>
