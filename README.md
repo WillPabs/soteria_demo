@@ -1,3 +1,3 @@
 # soteria_demo
 
-Spring Boot Project
+Spring Boot Project in kotlin utilizing nuxtjs framework
